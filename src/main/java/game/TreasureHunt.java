@@ -719,7 +719,7 @@ public class TreasureHunt {
 
         // Food cost: each node on path
         int nodesVisited = pr.path.size();
-        result.foodCost = nodesVisited * FOOD_COST_PER_NODE;
+       result.foodCost = (nodesVisited - 1) * FOOD_COST_PER_NODE;
 
         result.totalExpenses = result.fuelCost + result.foodCost;
 
