@@ -774,7 +774,7 @@ result.foodCost = intermediateNodes * FOOD_COST_PER_NODE;
             result.totalTreasureWeight = 0;
         }
 
-       result.profit = (result.totalTreasureValue * 3) - result.totalExpenses;
+       result.profit = (result.totalTreasureValue * 5) - result.totalExpenses;
     }
 
     // ===== FORMAT HUNTER SUMMARY =====
