@@ -16,7 +16,7 @@ public class MainMenu {
 
         Font.loadFont(MainMenu.class.getResourceAsStream("/fonts/VT323-Regular.ttf"), 20);
 
-        Text title = new Text("Treasure Hunt - Mantasha Fatima");
+        Text title = new Text("Treasure Hunt - CSN206");
         title.setStyle("-fx-font-size: 36px; -fx-font-weight: bold; -fx-font: VT323");
 
         Button startButton = new Button("Start");
