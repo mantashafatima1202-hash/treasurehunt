@@ -574,7 +574,7 @@ public class TreasureHunt {
                                    HunterResult result, String itemPrefix) {
 
         int n = weights.length;
-        int W = (int) capacity;
+        int W = (int) Math.round(capacity);
 
         int[][] dp = new int[n + 1][W + 1];
 
