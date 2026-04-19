@@ -344,36 +344,56 @@ public class TreasureHunt {
             }
 
             // ===== SET DESTINATIONS =====
-            else if (setDestMode[0]) {
+       
+else if (setDestMode[0]) {
 
-                Node n = findNode(nodes, x, y);
-                if (n == null) return;
+    Node n = findNode(nodes, x, y);
+    if (n == null) return;
 
-                if (destCount[0] >= 3) {
-                    System.out.println("All destinations already selected!");
-                    return;
-                }
+    // prevent selecting source
+    if (n.isSource) {
+        System.out.println("Cannot set source as destination!");
+        return;
+    }
 
-                n.isDestination = true;
-                n.capacity = 0;
+    // prevent duplicate click
+    if (n.isDestination) {
+        System.out.println("Already a destination!");
+        return;
+    }
 
-                if (destCount[0] == 0) {
-                    n.name = "Cave";
-                    caveNode[0] = n;
-                } else if (destCount[0] == 1) {
-                    n.name = "Mountain";
-                    mountainNode[0] = n;
-                } else if (destCount[0] == 2) {
-                    n.name = "Sea-Floor";
-                    seaFloorNode[0] = n;
-                }
+    // limit to 3
+    if (destCount[0] >= 3) {
+        System.out.println("All destinations already selected!");
+        return;
+    }
 
-                destCount[0]++;
+    n.isDestination = true;
+    n.capacity = 0;
 
-                drawNode(canvas, n);
+    if (destCount[0] == 0) {
+        n.name = "Cave";
+        caveNode[0] = n;
+    } else if (destCount[0] == 1) {
+        n.name = "Mountain";
+        mountainNode[0] = n;
+    } else {
+        n.name = "Sea-Floor";
+        seaFloorNode[0] = n;
+    }
 
-                System.out.println("Destination set: " + n.name);
-            }
+    destCount[0]++;
+
+    drawNode(canvas, n);
+
+    System.out.println("Destination set: " + n.name);
+
+    if (destCount[0] == 3) {
+        setDestMode[0] = false;
+    }
+}
+
+
         });
 
         return new Scene(root, 1150, 650);
