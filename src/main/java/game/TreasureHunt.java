@@ -738,10 +738,11 @@ else if (setDestMode[0]) {
         result.fuelCost = pr.distance * FUEL_COST_PER_KM;
 
         // Food cost: each node on path
-        int nodesVisited = pr.path.size();
-       result.foodCost = (nodesVisited - 1) * FOOD_COST_PER_NODE;
+      int intermediateNodes = pr.path.size() - 2; // remove source + destination
 
-        result.totalExpenses = result.fuelCost + result.foodCost;
+if (intermediateNodes < 0) intermediateNodes = 0;
+
+result.foodCost = intermediateNodes * FOOD_COST_PER_NODE;
 
         // Magic bag capacity from node before destination
         Node bagNode = null;
